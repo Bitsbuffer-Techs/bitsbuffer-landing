@@ -1,0 +1,91 @@
+{
+  "slug": "building-for-regulated-and-complex-industries",
+  "readingTime": "6 min read",
+  "updatedAt": "2026-07-20",
+  "keyTakeaways": [
+    "Poor software quality cost the US an estimated $2.41 trillion in 2022, with accumulated technical debt around $1.52 trillion (CISQ, 2022). In regulated work, that cost lands as rework plus audit exposure, not just bugs.",
+    "The single highest-value habit: name the failure modes in writing before any code exists. What must never fail, what happens when it does, and who is accountable.",
+    "Architecture, workflows, and governance have to be designed together. A technically clean system that ignores who approves what still fails its first audit question.",
+    "Regulations change on someone else's schedule. A system built for regulated work is designed for amendment from day one, or it starts dying at its first rule change."
+  ],
+  "sections": [
+    {
+      "paragraphs": [
+        "In regulated or high-stakes environments, the product has to be dependable from the first release. There is no soft-launch grace period when the system touches payroll, patient data, or financial records. Version one is already handling the thing an auditor will ask about.",
+        "That changes how you build. Architecture, workflows, and governance stop being three separate conversations and become one design problem, solved together or not at all.",
+        "This post lays out the habits we hold to when the domain is unforgiving: how we plan, what we name before writing code, and what we deliberately refuse to claim. Some of it echoes [what HIPAA-adjacent actually means](/blog/what-hipaa-adjacent-means-custom-build), because the discipline generalizes well beyond healthcare."
+      ]
+    },
+    {
+      "heading": "What does getting it wrong actually cost?",
+      "paragraphs": [
+        "The [Consortium for Information and Software Quality](https://www.it-cisq.org/the-cost-of-poor-quality-software-in-the-us-a-2022-report/) estimated the cost of poor software quality in the US at $2.41 trillion for 2022, with accumulated technical debt making up roughly $1.52 trillion of the drag. Those are economy-scale numbers, so translate them down to your scale: the same report identifies technical debt as the single largest obstacle to changing existing code.",
+        "For a team in a regulated domain, that obstacle has a specific shape. Every shortcut in version one becomes a compliance question in version two. The quick fix nobody documented becomes the change nobody dares make once a regulator, an auditor, or an enterprise customer's diligence checklist starts asking how the system works.",
+        "You feel this cost on an ordinary Tuesday, not in a crisis. A rule changes. The fix should take a week. It takes a quarter, because the code it touches was built fast and understood by one person who left. That gap between should and does is what the trillion-dollar figure looks like from inside one company."
+      ],
+      "stat": {
+        "value": "$2.41T",
+        "label": "Estimated 2022 cost of poor software quality in the US (CISQ, 2022)"
+      }
+    },
+    {
+      "heading": "Name the failure modes before you write code",
+      "paragraphs": [
+        "You reduce risk by naming the failure modes before the build starts, not after a client finds them. That single habit separates dependable systems from fragile ones, and it costs a meeting, not a budget.",
+        "The exercise is blunt. For each core workflow, write down: what must never fail here, what happens on the day it fails anyway, and who is accountable when it does. A payroll run that miscalculates tax. An audit trail with a gap. A permission check that leaks one role's data to another. Naming these in a document feels pessimistic. It is the opposite: every failure mode named on paper is one the design now has to answer for.",
+        "The list also becomes your test plan, your monitoring plan, and your honest conversation with the client about where the real risk sits. One artifact, four jobs. What the exercise cannot do is tell you how the system should be governed, and that is the next design decision, not an afterthought."
+      ],
+      "pullQuote": "Every failure mode named on paper is one the design now has to answer for."
+    },
+    {
+      "heading": "Design architecture, workflows, and governance together",
+      "paragraphs": [
+        "A good implementation plan starts with the real operating context: who uses the system, what decisions it supports, and what must never fail. Skip that context and you get a technically clean system that fails its first practical question, because nobody decided who approves what, who can override, and who sees which records.",
+        "In practice this means the approval chain is part of the data model, not a process document sitting beside the system. When the workflow says a senior officer signs off on payments above a threshold, the system enforces it, records it, and can prove it happened. Governance you cannot query is governance you cannot demonstrate, and in a regulated domain, demonstrating is the job.",
+        "The same applies to evidence. Logs, change records, and approval trails are designed as first-class outputs from day one. Bolting an audit trail onto a finished system is the most expensive way to build one, and the retrofit always leaves gaps exactly where the original shortcuts were."
+      ]
+    },
+    {
+      "heading": "Build with change in mind",
+      "paragraphs": [
+        "Regulations change on someone else's schedule. Tax rules shift with every finance act. Reporting formats get amended. A data protection rule arrives mid-project. In Pakistan, payroll teams live this yearly: rates and slabs move, and every system touching salaries has to follow within weeks, not quarters.",
+        "So the best teams build with change in mind. Rules that will move, like tax slabs, thresholds, and rate tables, live in configuration with an effective date, not hardcoded in logic. The question we ask in design reviews is plain: when this rule changes next year, is the fix a config entry or a code release? Each answer in the second column is future rework, priced in advance.",
+        "That is why strong product delivery is not just engineering. It is product thinking, operations discipline, and clear communication, held together long enough to survive contact with a rule change. There is also a version of this discipline that vendors get wrong in the other direction, and it is worth naming."
+      ]
+    },
+    {
+      "heading": "What not to claim",
+      "paragraphs": [
+        "The failure mode on the vendor side is claiming compliance you do not hold. Certifications are audited statuses, not adjectives. We do not claim HIPAA compliance, SOC 2, or ISO certification we have not been audited for, and we put that in writing early. What we do claim is narrower and more useful: we build to the underlying disciplines, tamper-evident records, role-based access, documented change control, so a client's own compliance process has solid ground to stand on.",
+        "If a project's real requirement is a named framework, that belongs in the first scoping conversation with the client's compliance owner in the room. A vendor who says yes to a framework question without asking which controls apply is guessing with your risk. Restraint here reads as more credible, not less, because the people who audit these systems for a living know exactly what a loose claim is worth."
+      ]
+    },
+    {
+      "heading": "Where to start",
+      "paragraphs": [
+        "Start with a one-page operating context: users, decisions the system supports, and the must-never-fail list. Then run the failure-mode exercise on the two workflows carrying the most risk. Then decide which rules live in configuration because they will change. Only after those three artifacts exist does architecture become a productive conversation.",
+        "The pattern holds whether the domain is [healthcare](/services/healthcare), [fintech](/services/fintech), or an internal system with real money moving through it. If your project lives in one of these domains, [tell us what must never fail](/contact), and we will start the conversation there."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How is building for a regulated industry different from a normal software project?",
+      "a": "The evidence requirements come first, not last. A normal project can ship features and add logging later. A regulated one designs the audit trail, access control, and approval records as core outputs from day one, because retrofitting evidence is the most expensive and least reliable way to produce it."
+    },
+    {
+      "q": "Does the vendor need to be certified for HIPAA, SOC 2, or ISO for my project?",
+      "a": "Usually the certification obligation sits with you, the covered business, not the development vendor. What you need from a vendor is software built to the underlying controls plus honesty about what they have and have not been audited for. Ask which specific controls their build supports, and be wary of anyone who answers with an adjective."
+    },
+    {
+      "q": "What should a failure-mode document actually contain?",
+      "a": "Three columns per core workflow: what must never fail, what happens on the day it fails anyway, and who is accountable when it does. Keep it to one or two pages. Its value is in existing before the build starts, when the design can still answer for it cheaply."
+    },
+    {
+      "q": "How do you keep a system current when regulations change every year?",
+      "a": "Put every rule with a history of changing, rates, slabs, thresholds, formats, into configuration with effective dates, so an update is a data entry rather than a code release. The design question to ask up front: when this rule changes, is the fix config or code? Price every code answer as future rework."
+    }
+  ],
+  "ctaLabel": "Tell us what must never fail in your system",
+  "ctaHref": "/contact"
+}

@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── DESIGN TOKENS ──────────────────────────────────────────────────────
+   Bitsbuffer studio palette. Light, restrained, confident. Switched from
+   dark to light 2026-07-08 per Adnan, using the Azure marketing site as
+   a structural nav reference (not a visual clone). Same rule as before
+   still applies: no gradient blobs, no glow-on-every-card, flat and
+   restrained, just on a white surface instead of charcoal now.
+   RGB triplets (not hex) so Tailwind's <alpha-value> opacity modifiers
+   work, e.g. bg-bg/95.
+------------------------------------------------------------------------ */
+:root {
+  --color-bg-rgb:               255 255 255; /* white */
+  --color-surface-rgb:          247 248 248;
+  --color-surface-raised-rgb:   255 255 255;
+  --color-border-rgb:           223 226 227;
+  --color-border-subtle-rgb:    234 236 237;
+  --color-text-primary-rgb:     22 25 27;
+  --color-text-secondary-rgb:   77 87 90;
+  --color-text-muted-rgb:       100 110 113;
+  /* Brand teal, sampled directly from the real logo files (confirmed with
+     Adnan 2026-07-07 over the office-signage blue vs logo teal question).
+     Never hand-guess this value going forward, it traces back to the
+     actual logo pixels, not an eyeballed screenshot. Values unchanged by
+     the light-theme flip, the brand mark itself doesn't move. */
+  --color-accent-rgb:           47 131 142;
+  --color-accent-bright-rgb:    36 108 118;
+  --color-accent-dim-rgb:       214 232 234;
+  /* Deep teal "ink" band, for the rare full-bleed dark contrast section
+     within an otherwise light page (e.g. the Ask Bitsbuffer band under
+     the hero). Same hue family as accent, just pushed dark instead of
+     light, so it still reads as brand teal rather than a random navy. */
+  --color-ink-rgb:               12 34 37;
+  --color-ink-soft-rgb:          22 58 62;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(var(--color-bg-rgb));
+  color: rgb(var(--color-text-primary-rgb));
+}
+
+/* Sitewide focus-visible ring, never remove outline without a replacement */
+:focus-visible {
+  outline: 2px solid theme('colors.accent.DEFAULT');
+  outline-offset: 2px;
+}
+
+/* ─── LAYOUT PRIMITIVES ──────────────────────────────────────────────── */
+.container-site {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+}
+
+/* Wider gutter, high max-width cap instead of a hard 1280px ceiling.
+   Used on Header and Hero only (2026-07-08, Adnan's call) so the top of
+   the page uses more of the browser width on desktop instead of leaving
+   large empty margins either side of a narrow centered column. Still
+   capped so it doesn't stretch into unreadable ultra-wide territory on
+   very large monitors. */
+.container-fluid {
+  @apply mx-auto w-full max-w-[1800px] px-5 sm:px-8 lg:px-12 xl:px-16;
+}
+
+.section {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+/* font-black (not font-bold) to match the hero heading's weight —
+   shared class, so this is a sitewide consistency change, 2026-07-08. */
+.section-title {
+  @apply text-3xl md:text-4xl font-black tracking-tight text-text-primary;
+}
+
+/* ─── SHARED COMPONENT CLASSES ──────────────────────────────────────────
+   Every page consumes these instead of reinventing card/button markup
+   per section. This is the exact rule the old site's Portfolio, Flagship
+   Domains, and hero components each broke in their own way.
+------------------------------------------------------------------------ */
+/* Glossy pass, 2026-07-08: subtle linear-gradient fill + a 1px inset top
+   highlight, the classic "glossy button" technique. No blur, no
+   backdrop-filter, so it costs nothing extra to paint versus a flat
+   fill, just a slightly bigger CSS rule. Kept restrained (a few RGB
+   points of difference top to bottom), this is a sheen, not a glow. */
+.card {
+  @apply rounded-xl border border-border p-6 transition-colors duration-150;
+  background: linear-gradient(180deg, rgb(var(--color-surface-raised-rgb)) 0%, rgb(var(--color-surface-rgb)) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.card:hover {
+  @apply border-accent/40;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5
+         text-sm font-semibold text-white transition-all duration-150
+         disabled:opacity-50 disabled:cursor-not-allowed;
+  background: linear-gradient(180deg, rgb(var(--color-accent-bright-rgb)) 0%, rgb(var(--color-accent-rgb)) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, rgb(var(--color-accent-rgb)) 0%, rgb(var(--color-accent-bright-rgb)) 100%);
+}
+
+.btn-primary:disabled {
+  box-shadow: none;
+}
+
+/* Same gloss treatment as .btn-primary, minus the layout/padding, for the
+   handful of small filled accent elements that don't use .btn-primary
+   (icon badges, active tab pills). */
+.gloss-accent {
+  background: linear-gradient(180deg, rgb(var(--color-accent-bright-rgb)) 0%, rgb(var(--color-accent-rgb)) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.gloss-accent:hover {
+  background: linear-gradient(180deg, rgb(var(--color-accent-rgb)) 0%, rgb(var(--color-accent-bright-rgb)) 100%);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border
+         bg-transparent px-5 py-2.5 text-sm font-semibold text-text-primary
+         transition-colors duration-150 hover:border-accent/50 hover:text-accent;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-base;
+}
+
+.badge {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-border-subtle
+         bg-surface-raised px-3 py-1 text-xs font-medium text-text-secondary;
+}
+
+.form-input {
+  @apply w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm
+         text-text-primary placeholder:text-text-muted transition-colors duration-150
+         focus:border-accent focus:outline-none;
+}
+
+/* ─── HERO BITS ARTIFACT MOTION ──────────────────────────────────────────
+   Ambient motion for the hero's teal "bits galaxy", added 2026-07-08.
+   transform + opacity only, the two properties a browser can animate
+   without recalculating layout, so ~30 tiny SVG shapes cost nothing
+   noticeable. Durations are long (7-13s) and delays are staggered per
+   node so nothing pulses in sync, this is meant to read as ambient
+   tech texture, not a busy particle field. Fully OFF under
+   prefers-reduced-motion, both for accessibility and as a free
+   low-power fallback.
+------------------------------------------------------------------------ */
+@keyframes bit-float {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(var(--drift-x, 0px), var(--drift-y, -6px)); }
+}
+
+@keyframes bit-twinkle {
+  0%, 100% { opacity: var(--base-o, 1); }
+  50%      { opacity: calc(var(--base-o, 1) * 0.5); }
+}
+
+.bit-node {
+  opacity: var(--base-o, 1);
+  animation: bit-float var(--dur, 9s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.bit-dust {
+  opacity: var(--base-o, 1);
+  animation: bit-twinkle var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bit-node,
+  .bit-dust {
+    animation: none;
+  }
+}
+
+/* ─── MARQUEE (Delivery Discipline band) ─────────────────────────────────
+   Same technique as wf-engine-landing/newWfengine's TrustedIndustriesSection
+   (2026-07-08, reused for visual consistency across the two sites): pure
+   CSS transform loop, content array duplicated so the loop seam is
+   invisible, no JS, no layout shift. Respects prefers-reduced-motion.
+------------------------------------------------------------------------ */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left {
+    animation: none;
+  }
+}
+
+/* ─── ACCORDION PANEL (FAQ expand/collapse) ──────────────────────────────
+   Replaces Framer Motion's height:0->auto AnimatePresence pattern
+   (2026-07-18 perf pass: framer-motion removed sitewide, its JS execution
+   cost was a real chunk of main-thread time on every page that never used
+   the interaction). `grid-template-rows: 0fr -> 1fr` is the standard
+   CSS-only way to animate to an intrinsic content height, evergreen
+   browser support, no JS. The inner wrapper clips via overflow:hidden
+   while the outer row-track transitions. Bonus over the old
+   AnimatePresence version: content stays in the DOM even while visually
+   collapsed (AnimatePresence unmounted it), so crawlers reading raw HTML
+   always see the full FAQ answer text, open or not, which is a genuine
+   GEO/AEO win, not just a perf one.
+------------------------------------------------------------------------ */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease-out;
+}
+
+.accordion-panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-panel > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-panel {
+    transition: none;
+  }
+}
+
+/* ─── MOUNT FADE-UP (above-the-fold entrance) ────────────────────────────
+   Replaces Framer Motion's heroContainer/heroItem stagger (2026-07-18 perf
+   pass). This content is already above the fold on load, so it only ever
+   needs to animate once on mount, never on scroll -- a plain CSS keyframe
+   with a per-element animation-delay does the exact same staggered
+   fade+rise with zero JS and no hydration wait, cheaper than even
+   Reveal.tsx's IntersectionObserver since there's no scroll trigger to
+   observe. `both` fill-mode holds the 0%-state before the delay elapses so
+   nothing flashes visible-then-hidden.
+------------------------------------------------------------------------ */
+@keyframes fade-up-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up-in 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+/* Tab/filter content swap (replaces AnimatePresence mode="wait" crossfade).
+   React unmounts the old keyed node and mounts a fresh one on click, so a
+   plain CSS keyframe on the new node's own mount is enough to get the
+   "content settles in" feel without needing JS to orchestrate an overlap
+   between the outgoing and incoming node -- the outgoing one simply cuts,
+   which reads as instant/snappy rather than janky at this duration. */
+@keyframes tab-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-tab-in {
+  animation: tab-in 0.3s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tab-in {
+    animation: none;
+  }
+}
+
+/* Plain opacity crossfade (RotatingImage.tsx photo rotation, replaces
+   AnimatePresence mode="wait" opacity fade). Same keyed-remount trick as
+   .animate-tab-in, just without the y-shift since this is a photo swap,
+   not a UI panel settling into place. */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in-slow {
+  animation: fade-in 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-slow {
+    animation: none;
+  }
+}
+
+/* HERO DOT-WAVE SCROLL MOTION: removed the animation-timeline: view()
+   version 2026-07-08, no visible effect on an element that's already
+   pinned at the top of the page at load, there's no "entering the
+   viewport" left for the timeline to animate through by the time any
+   scroll happens. Replaced with a plain scroll-listener version in
+   HeroScrollWave.tsx, then removed that too when it still wasn't worth
+   the extra moving part. The technique itself is fine, see below, it
+   was just the wrong element to put it on. */
+
+/* SCROLL-REVEAL: the animation-timeline: view() version tried here
+   2026-07-08 (ported from wf-engine-landing/newWfengine) wasn't visibly
+   firing on FeaturedUpdatesSection, likely desynced by that section
+   being lazy-loaded via next/dynamic. Replaced with a plain
+   IntersectionObserver version, see src/components/ui/Reveal.tsx. */

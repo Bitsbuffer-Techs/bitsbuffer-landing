@@ -1,0 +1,79 @@
+{
+  "slug": "workflow-engine-lessons-from-building-our-own-platform",
+  "readingTime": "6 min read",
+  "updatedAt": "2026-07-20",
+  "keyTakeaways": [
+    "Workflow Engine exists because the same problem kept appearing across client teams: useful software built in fragments, with too much manual coordination and too little shared structure.",
+    "The HR workflows in version one were not designed in a product workshop. They were architected by the person who runs people operations for our own team, from processes already running in real payroll cycles.",
+    "Running our own product changed our client work: every lesson from a client build feeds the product, and every product lesson feeds the next client build.",
+    "We are honest about the stage: Workflow Engine is early, in the market-awareness phase, and we would rather show what is real than claim traction we have not earned."
+  ],
+  "sections": [
+    {
+      "paragraphs": [
+        "Workflow Engine exists because we kept seeing the same issue across different teams: useful software was often being built in fragments, with too much manual coordination and too little shared structure. Leave for one week, a spreadsheet appears. A calculation lives in one person's head. An approval happens in a chat thread nobody can search six months later.",
+        "After watching the pattern repeat across projects, the conclusion was hard to avoid. The problem was not any single tool. It was the missing structure between tools, the workflow layer where handoffs, approvals, and records either exist by design or exist as improvisation.",
+        "So we built the product ourselves. This post is about what building it taught us, including the parts that were harder than expected. It is a companion piece to [why custom software still wins when a workflow is complex](/blog/why-custom-software-still-wins), told from the other side of the table: what happens when the builder becomes the product owner."
+      ]
+    },
+    {
+      "heading": "Why build a product instead of another client project?",
+      "paragraphs": [
+        "Client work has a built-in limit: the lessons stay behind when the project ends. You solve a hard approval-routing problem for one client, and the next client pays to have it solved again, slightly differently, by whoever is on the team that month.",
+        "A product is a way to package the learning into something reusable, scalable, and durable. Every delivery lesson we had collected, how approvals actually flow, where records go missing, which workflow steps people skip under pressure, had somewhere permanent to live. The product became the memory the client projects never had.",
+        "It also forced a discipline consulting never does. A client accepts a workaround with a promise to fix it later. A product you run yourself does not, because you meet the workaround again every single week until you fix it. What made that discipline real for us was choosing to be the first user, not just the vendor."
+      ],
+      "pullQuote": "The product became the memory the client projects never had."
+    },
+    {
+      "heading": "The first user was our own HR lead",
+      "paragraphs": [
+        "The HRMS workflows in Workflow Engine version one were not invented in a product workshop. They were architected by our own HR lead, the person who runs people operations for our 21-to-50-person team, from processes already running in real payroll cycles under Pakistan labour law.",
+        "That origin shows in the details. The approval chains match how sign-off actually happens in a small company, where one person wears several hats. The records the system keeps are the ones an HR lead genuinely gets asked for, not the ones a feature checklist suggests. When a workflow felt wrong, we knew within a week, because the person it inconvenienced sat in our own standup.",
+        "Would we have caught those design errors building for an external client? Some, eventually, through feedback rounds. But at the speed of someone living in the product, wrong turned into fixed in days. That feedback speed, more than any feature, is the real advantage of running what you build."
+      ]
+    },
+    {
+      "heading": "What the product taught our client work",
+      "paragraphs": [
+        "That perspective now informs the custom work we take on. A good product is often the result of listening closely, shipping carefully, and improving with each release, and once that rhythm becomes normal internally, it changes what you tolerate in client delivery.",
+        "You get one structural advantage from running a product this way. Every lesson from a client build feeds back into Workflow Engine, and every lesson from Workflow Engine feeds forward into the next client build. The loop runs in both directions, and neither side pays extra for it.",
+        "It shows up in small, concrete ways. We scope approval workflows faster because we have shipped and revised our own. We ask earlier questions about record-keeping because we know which records get requested months later. And we push back on speculative features with more confidence, because we have paid the maintenance bill for our own speculative features and remember the total."
+      ]
+    },
+    {
+      "heading": "What we haven't proven yet",
+      "paragraphs": [
+        "Honesty about stage: Workflow Engine is early. We are in the awareness phase, building in the open, and this post is part of that. We are not claiming a large customer base or public case-study results, because we have not earned those claims yet. What is real today: a working HRMS core, workflows shaped by daily internal use, and a delivery team that maintains what it ships.",
+        "We publish it this way deliberately. The teams we want to work with, HR directors and operations leads at growing companies, are exactly the people who can smell an inflated traction claim. Showing the real stage, and letting the product earn the next claim, is slower and better."
+      ]
+    },
+    {
+      "heading": "The lessons, in one place",
+      "paragraphs": [
+        "Build the structure between tools, because the gaps between systems are where work goes missing. Be your own first user if you possibly can, because feedback measured in days beats feedback measured in quarters. Let client work and product work feed each other instead of competing. And claim only what is real, because trust compounds slower than hype but does not crash.",
+        "If the fragmented-tools pattern sounds like your operation, whether the answer is a product like ours or [a custom build shaped to your workflow](/blog/why-custom-software-still-wins), [we are easy to reach](/contact). Tell us where work goes missing between your systems, and we will tell you honestly which kind of fix it needs."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is Workflow Engine?",
+      "a": "Workflow Engine is an HRMS built by Bitsbuffer. Its version-one workflows, covering core people operations, were architected by our own HR lead from processes running in our own company under Pakistan labour law, and the product carries forward the delivery lessons from years of client builds."
+    },
+    {
+      "q": "Why should a software company build its own product at all?",
+      "a": "Because client projects end and take their lessons with them. A product gives those lessons a permanent home, forces the team to live with its own design decisions, and creates a feedback loop where product and client work each make the other better."
+    },
+    {
+      "q": "Does dogfooding actually improve software quality?",
+      "a": "In our experience the gain is speed, which becomes quality. When the person a bad workflow inconveniences sits in your own standup, wrong turns into fixed in days instead of surviving until the next client feedback round. The product improves faster because the feedback loop is measured in days."
+    },
+    {
+      "q": "Is Workflow Engine ready for my company today?",
+      "a": "That depends on your size and needs, and we would rather tell you directly than oversell here. The product is early-stage with a working HRMS core shaped by real internal use. Reach out, describe your people-operations setup, and we will give you an honest read on fit, including if the answer is not yet."
+    }
+  ],
+  "ctaLabel": "Ask us where Workflow Engine fits your operation",
+  "ctaHref": "/contact"
+}

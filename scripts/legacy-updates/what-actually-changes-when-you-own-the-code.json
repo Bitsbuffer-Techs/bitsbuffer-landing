@@ -1,0 +1,85 @@
+{
+  "slug": "what-actually-changes-when-you-own-the-code",
+  "readingTime": "6 min read",
+  "updatedAt": "2026-07-20",
+  "keyTakeaways": [
+    "Owning your code means you can hire a different team, extend the system yourself, or move hosting without asking permission. It is a practical capability, not a contract footnote.",
+    "The fear is measurable: 94% of IT leaders report concern about vendor lock-in, and 57% spent over $1 million on platform migrations in a single year (Parallels, 2026).",
+    "Ownership on paper is worthless without three practical things: repository access in your name, documentation a new developer can follow, and a stack your market can actually hire for.",
+    "Ask the ownership question before the build starts, in writing: who owns the code, and can you prove it with access, not with a clause."
+  ],
+  "sections": [
+    {
+      "paragraphs": [
+        "Most teams do not think about code ownership until they need to make a change and cannot reach the person who built the system, or the contract says they need permission first. By then the options are bad: pay whatever the original vendor asks, or pay someone else to rebuild what you thought you already owned.",
+        "Owning the code means you can hire a different team later, extend the system yourself, or move hosting providers without renegotiating anything. It is a practical decision, not a legal formality, and it is decided before the first line of code gets written, in the contract and in the repository settings.",
+        "This post covers what ownership means in practice, the checklist to run before any build starts, and the honest costs of ownership nobody puts in the sales deck. It pairs with [why custom software still wins](/blog/why-custom-software-still-wins), because ownership is half of what you are actually buying when you commission a build."
+      ]
+    },
+    {
+      "heading": "How real is the lock-in problem?",
+      "paragraphs": [
+        "Real enough to measure. [Parallels' 2026 State of Cloud Computing survey](https://www.parallels.com/newsroom/news/press-releases/20260217-cloud-survey/) found 94% of IT leaders concerned about vendor lock-in, and 57% reporting over $1 million spent on platform migrations in the past year. The concern is not paranoia. It is the price tag of leaving, measured by people who paid it.",
+        "Those are enterprise numbers. For a growing business the million-dollar migration has a smaller but harsher equivalent: a full rebuild of a system you already paid to build once, priced at a moment when you cannot walk away. Enterprise budgets absorb that. An SME budget often cannot, which is why the ownership question matters more below the enterprise line, not less.",
+        "And lock-in rarely announces itself. It accumulates quietly: a proprietary framework here, a vendor-held deployment key there, documentation that never got written. Each one felt small when it happened. Together they are a wall, and you find out how high it is on the day you try to leave."
+      ],
+      "stat": {
+        "value": "94%",
+        "label": "IT leaders concerned about vendor lock-in (Parallels State of Cloud Computing survey, 2026)"
+      }
+    },
+    {
+      "heading": "What does owning the code mean in practice?",
+      "paragraphs": [
+        "Three things, all checkable. First, access: the repository, the deployment pipeline, the database, and every credential exist in accounts your company controls. Not access on request. Access now, verifiable in five minutes by logging in.",
+        "Second, documentation: a competent developer who has never met the original team can read the setup guide, run the system locally, and make a small change within days. Undocumented code is owned in name only, because every change still routes through the one team that remembers how it works.",
+        "Third, a hireable stack. A system built on widely used technology can be maintained by thousands of developers in your market. A system built on a vendor's in-house framework can be maintained by exactly one company, and both of you know it. Ownership only means something if the system is documented and built on a stack your next developer can actually read.",
+        "Miss any of the three and the other two lose most of their value. A contract clause without access is a promise. Access without documentation is a puzzle. All three together are what ownership actually is."
+      ],
+      "pullQuote": "A contract clause without access is a promise. Access without documentation is a puzzle. All three together are what ownership actually is."
+    },
+    {
+      "heading": "The questions to ask before any build starts",
+      "paragraphs": [
+        "You should ask this question before any build starts, not after it ships: who owns the code, and can you prove it? In practice, that unpacks into a short checklist worth putting in writing with any vendor, including us.",
+        "Who owns the intellectual property on delivery, stated plainly in the contract? Is the repository under your organization's account from day one, with the vendor as a collaborator rather than the owner? Are hosting, domains, and third-party services registered to your accounts and your billing? Is documentation a listed deliverable with an acceptance test, meaning a new developer can follow it? And is the stack one you could hire for locally this month?",
+        "A vendor who welcomes these questions is telling you something. So is a vendor who deflects them. The answers cost nothing to give at the start of a project, which is exactly why refusing to give them is information."
+      ]
+    },
+    {
+      "heading": "What ownership looks like when it works",
+      "paragraphs": [
+        "A client we built a content management platform for owns their code outright: repository, documentation, deployment, all of it. They could take the system to any development team in the market tomorrow, and nothing in the contract or the code would stop them.",
+        "In July 2026 they came back to us for version three, a whole new build. Not because leaving was expensive. Because staying was worth it. That is the deal ownership actually creates: the vendor earns the next project on the work, not on the wall. As the client, you keep the exit option while choosing to stay, and as the vendor, we get a client relationship that does not depend on a hostage situation. Both sides of that trade are better than the alternative.",
+        "It also changes the day-to-day. Clients who own their code ask more questions, learn their own systems, and make smaller changes in-house. The relationship gets more technical and more honest, because nothing is hidden behind an access wall."
+      ]
+    },
+    {
+      "heading": "The honest costs of owning it",
+      "paragraphs": [
+        "Ownership is not free, and pretending otherwise would undercut everything above. Owning the code means owning decisions: hosting bills in your name, an upgrade cadence someone must mind, security patches someone must apply, and a maintenance budget that exists whether or not you feel like maintaining things this quarter. A vendor-hosted subscription tool hides those costs inside the fee. Ownership shows them to you.",
+        "For commodity needs, the subscription is often the right trade, the same boundary we draw in [when off-the-shelf is the right call](/blog/why-custom-software-still-wins). For the systems your business actually runs on, the calculus flips: the hidden cost of not owning them compounds every year, and it comes due at the worst possible moment, priced by someone who knows you cannot say no. If you are commissioning a build this year, [put the ownership checklist to us first](/contact). We will answer every question on it in writing."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Does paying for custom software automatically mean I own the code?",
+      "a": "No. Ownership depends on what the contract says and where the code actually lives. Plenty of development contracts keep the IP with the vendor or license it back to you with conditions. Ask for plain IP assignment on delivery, and verify with access: the repository and infrastructure under your accounts, not the vendor's."
+    },
+    {
+      "q": "What should I check before signing with a development vendor?",
+      "a": "Five things, in writing: IP assignment on delivery, repository under your organization's account from day one, hosting and services on your billing, documentation as a deliverable a new developer can follow, and a stack you could hire for in your local market this month. A vendor's reaction to this list is itself part of the answer."
+    },
+    {
+      "q": "If I own the code, can I still keep the original vendor for maintenance?",
+      "a": "Yes, and that is the healthiest version of the relationship: the vendor keeps the work by being good, not by being irreplaceable. Ownership does not mean leaving. It means every renewal, every quote, and every roadmap conversation happens with the option to leave sitting quietly on your side of the table."
+    },
+    {
+      "q": "What does vendor lock-in actually cost a smaller company?",
+      "a": "Enterprises measure it in migration spend, with 57% of IT leaders reporting over $1 million in a year (Parallels, 2026). For an SME the cost usually appears as a forced rebuild: the locked system cannot be extended or transferred, so you pay to build it again, at a moment chosen by the problem rather than by your budget."
+    }
+  ],
+  "ctaLabel": "Put the ownership checklist to us before your next build",
+  "ctaHref": "/contact"
+}

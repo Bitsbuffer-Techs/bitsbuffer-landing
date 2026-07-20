@@ -1,0 +1,51 @@
+# Bitsbuffer
+
+> Pakistan-based custom software studio building production software across e-commerce, fintech, ERP, agri-tech, healthcare, logistics, edtech, and real estate. Also builds and maintains Workflow Engine, its flagship product.
+
+## Industry pages
+
+- [E-commerce](https://bitsbuffer.com/services/ecommerce): Storefront, checkout, inventory, and fulfillment systems built for real order volume.
+- [FinTech](https://bitsbuffer.com/services/fintech): Payments, compliance, lending, and reconciliation systems built to be auditable from day one.
+- [Agri-tech](https://bitsbuffer.com/services/agritech): Field operations, dairy management, and yield monitoring software built for the field.
+- [Enterprise / ERP](https://bitsbuffer.com/services/erp): Order, inventory, finance, and reporting connected to one system.
+- [Healthcare](https://bitsbuffer.com/services/healthcare): Patient records, scheduling, billing, and telehealth systems built around real clinical workflows.
+- [Logistics](https://bitsbuffer.com/services/logistics): Fleet tracking, warehouse management, and route optimization built around how freight moves.
+- [EdTech](https://bitsbuffer.com/services/edtech): Course delivery, enrollment, grading, and parent portal systems built for how an institution teaches.
+- [Real Estate](https://bitsbuffer.com/services/realestate): Listings, lease management, and rent reconciliation systems built around how a brokerage sells.
+
+## Pages
+
+- [Services](https://bitsbuffer.com/services): Custom software development scoped through discovery, built and audited the same way Workflow Engine is.
+- [Case Studies](https://bitsbuffer.com/case-studies): Real production projects, including Quick Wrap Gifts, Mutishop, Sikhaid Global, Prize ERP, SEO Dashboard, Smart List, TradeLink360, Kissan Connect, and Love Anew.
+- [Blog](https://bitsbuffer.com/blog): Writing on software strategy, product delivery, and operations.
+- [About](https://bitsbuffer.com/about): Who Bitsbuffer is and how the studio works.
+- [Careers](https://bitsbuffer.com/careers): Open roles at Bitsbuffer.
+- [Contact](https://bitsbuffer.com/contact): Start a project.
+
+## Blog posts
+
+- [The Real Cost of Manual Reconciliation in Fintech, and When to Fix It](https://bitsbuffer.com/blog/real-cost-of-manual-reconciliation-fintech): What manual reconciliation actually costs and the audit-trail risk hiding inside it.
+- [The Ethical Implications of AI: What Actually Goes Wrong, and Who Answers for It](https://bitsbuffer.com/blog/ethical-implications-of-ai-enterprise-accountability): Real cases of AI bias, why accountability is still unassigned at most companies, and what actually catches this before it ships.
+- [What Cart Abandonment Data Actually Tells You to Fix First](https://bitsbuffer.com/blog/cart-abandonment-data-what-to-fix-first): Reading the real breakdown behind the 70% abandonment average before rebuilding checkout.
+- [Multi-Channel Inventory Sync: Where Off-the-Shelf Tools Break](https://bitsbuffer.com/blog/multi-channel-inventory-sync-overselling-cost): What inventory distortion costs and why single-source-of-truth architecture fixes overselling.
+- [Farm-Level Data vs. Field-Level Data: Why the Difference Matters](https://bitsbuffer.com/blog/farm-level-vs-field-level-data): Why farm-wide averages hide the field that actually needs attention.
+- [When Off-the-Shelf Farm Management Software Doesn't Fit Smallholder Operations](https://bitsbuffer.com/blog/off-the-shelf-farm-software-smallholder-fit): Why literacy, connectivity, and plot structure decide whether a farm tool actually gets used.
+- [The Real Signs You've Outgrown Your Packaged ERP](https://bitsbuffer.com/blog/signs-youve-outgrown-packaged-erp): How to tell a packaged-ERP fit problem from a bad implementation.
+- [Multi-Entity, Multi-Warehouse: Why Generic ERP Breaks at Scale](https://bitsbuffer.com/blog/multi-entity-multi-warehouse-erp-scale): Why single-location ERP logic multiplies complexity past one entity or warehouse.
+- [What 'HIPAA-Adjacent' Actually Means for a Custom-Built System](https://bitsbuffer.com/blog/what-hipaa-adjacent-means-custom-build): The jurisdiction-neutral security pattern behind HIPAA and ISO 27799.
+- [HL7 and FHIR Interoperability: What a Custom Healthcare Build Actually Requires](https://bitsbuffer.com/blog/hl7-fhir-interoperability-custom-build): Why supporting FHIR is not the same as being interoperable.
+- [Why Off-the-Shelf Fleet Software Fights Your Actual Routes](https://bitsbuffer.com/blog/off-the-shelf-fleet-software-actual-routes): Why most routing failures are bad address data, not bad algorithms.
+- [Warehouse Management Software: Build vs. Buy for Growing 3PLs](https://bitsbuffer.com/blog/warehouse-management-build-vs-buy-3pl): Where generic WMS platforms break under real multi-client operations.
+- [SCORM, xAPI, or Neither: What a New LMS Actually Needs](https://bitsbuffer.com/blog/scorm-xapi-lti-what-new-lms-needs): What SCORM, xAPI, cmi5, and LTI each actually do, and which one a build needs.
+- [Multi-Tenant LMS: When Enrollment Complexity Forces the Build vs. Buy Decision](https://bitsbuffer.com/blog/multi-tenant-lms-enrollment-build-vs-buy): Why enrollment logic is usually the first feature to break under multi-tenant complexity.
+- [MLS Integration Is Not One Thing: What to Ask Before You Build](https://bitsbuffer.com/blog/mls-integration-what-to-ask-before-you-build): The three separate decisions hiding inside "we need MLS integration."
+- [Lease Management and CAM Reconciliation: Where Generic Property Software Falls Short](https://bitsbuffer.com/blog/lease-management-cam-reconciliation-property-software): Why common area maintenance reconciliation breaks generic property tools.
+- [Why Custom Software Still Wins When the Workflow Is Complex](https://bitsbuffer.com/blog/why-custom-software-still-wins): Why off-the-shelf tools fail on nuanced, specific workflows.
+- [How to Build Software for Regulated and Complex Industries](https://bitsbuffer.com/blog/building-for-regulated-and-complex-industries): Treating compliance and change as part of the design, not an afterthought.
+- [Workflow Engine and the Lessons From Building Our Own Platform](https://bitsbuffer.com/blog/workflow-engine-lessons-from-building-our-own-platform): What building a flagship product taught Bitsbuffer about delivery.
+- [The 6-Pass Audit We Run Before Every Launch](https://bitsbuffer.com/blog/the-6-pass-audit-behind-every-launch): The standing quality process behind every Bitsbuffer launch.
+- [What Actually Changes When You Own the Code](https://bitsbuffer.com/blog/what-actually-changes-when-you-own-the-code): Why code ownership is a practical decision, not a legal formality.
+
+## Flagship product
+
+- [Workflow Engine](https://wfengine.com): Bitsbuffer's own HR and operations platform, the proving ground for how every client build is scoped and audited.

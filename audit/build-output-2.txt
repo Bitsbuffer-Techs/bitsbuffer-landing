@@ -1,0 +1,86 @@
+
+> bitsbuffer-website@1.0.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\cowork\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\cowork\bitsbuffer-landing\package-lock.json
+
+   ▲ Next.js 15.5.20
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+(node:12664) ExperimentalWarning: CommonJS module C:\cowork\bitsbuffer-landing\node_modules\tailwindcss\lib\lib\load-config.js is loading ES Module C:\cowork\bitsbuffer-landing\tailwind.config.ts using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Compiled successfully in 11.3s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/26) ...
+   Generating static pages (6/26) 
+   Generating static pages (12/26) 
+   Generating static pages (19/26) 
+ ✓ Generating static pages (26/26)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                            Size  First Load JS
+┌ ○ /                                                               14.5 kB         145 kB
+├ ○ /_not-found                                                       995 B         103 kB
+├ ○ /about                                                          3.88 kB         131 kB
+├ ƒ /api/contact                                                      123 B         103 kB
+├ ○ /blog                                                           2.66 kB         130 kB
+├ ● /blog/[slug]                                                      173 B         111 kB
+├   ├ /blog/why-custom-software-still-wins
+├   ├ /blog/building-for-regulated-and-complex-industries
+├   ├ /blog/workflow-engine-lessons-from-building-our-own-platform
+├   └ [+2 more paths]
+├ ○ /careers                                                         3.1 kB         130 kB
+├ ○ /case-studies                                                   2.48 kB         130 kB
+├ ● /case-studies/[slug]                                              165 B         106 kB
+├   ├ /case-studies/quick-wrap-gifts
+├   ├ /case-studies/mutishop
+├   ├ /case-studies/sikhaid-global
+├   └ [+6 more paths]
+├ ○ /contact                                                        3.95 kB         126 kB
+├ ○ /flagship-domains                                                 165 B         106 kB
+└ ○ /services                                                       5.44 kB         136 kB
++ First Load JS shared by all                                        102 kB
+  ├ chunks/255-3981a3d1f3561bd8.js                                  46.2 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js                             54.2 kB
+  └ other shared chunks (total)                                     1.99 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> bitsbuffer-website@1.0.0 postbuild
+> next-sitemap
+
+✨ [next-sitemap] Loading next-sitemap config: file:///C:/cowork/bitsbuffer-landing/next-sitemap.config.js
+✅ [next-sitemap] Generation completed
+┌───────────────┬────────┐
+│ (index)       │ Values │
+├───────────────┼────────┤
+│ indexSitemaps │ 1      │
+│ sitemaps      │ 1      │
+└───────────────┴────────┘
+-----------------------------------------------------
+ SITEMAP INDICES 
+-----------------------------------------------------
+
+   ○ https://www.bitsbuffer.com/sitemap.xml
+
+
+-----------------------------------------------------
+ SITEMAPS 
+-----------------------------------------------------
+
+   ○ https://www.bitsbuffer.com/sitemap-0.xml
+
+

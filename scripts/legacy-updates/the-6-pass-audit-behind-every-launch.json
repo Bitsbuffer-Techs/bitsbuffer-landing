@@ -1,0 +1,93 @@
+{
+  "slug": "the-6-pass-audit-behind-every-launch",
+  "readingTime": "7 min read",
+  "updatedAt": "2026-07-20",
+  "keyTakeaways": [
+    "A site that compiles clean is not a site that works. Our audit exists because a demo form once looked correct in code and silently dropped real submissions.",
+    "Every launch clears six passes in order: code quality, performance, accessibility, SEO, AI visibility, and a human walkthrough in a real browser.",
+    "The scale of what goes unchecked is measurable: 94.8% of the top one million home pages had detectable WCAG accessibility failures, averaging 51 errors per page (WebAIM, 2025).",
+    "Automated scores lie in specific ways. In July 2026 our own dev server reported an SEO score of 92 while the production build scored 100, and a rendering bug served blank article bodies on pages every automated pass had cleared."
+  ],
+  "sections": [
+    {
+      "paragraphs": [
+        "A site that compiles clean is not the same as a site that works. We learned this the expensive way on an earlier build, where a demo form looked correct in the code and silently dropped real submissions for an unknown stretch of time before anyone caught it. No error, no alert. Just prospects filling a form and nobody ever seeing it.",
+        "How many leads did it cost? We do not know, and that is the point. The worst software failures are silent, and nothing in a standard build pipeline was ever going to catch this one.",
+        "That single bug turned into a standing process. Every launch now clears six passes, in a fixed order, every time. This post explains what they are, why the order matters, and what each pass has actually caught, including on our own website, which is the honest part."
+      ]
+    },
+    {
+      "heading": "How big is the gap between shipped and checked?",
+      "paragraphs": [
+        "Take one dimension we can measure across the whole web: accessibility. The [WebAIM Million 2025 report](https://webaim.org/projects/million/2025) found detectable WCAG 2 failures on 94.8% of the top one million home pages, averaging 51 distinct errors per page. These are the world's most-visited sites, built by funded teams, and 19 out of 20 fail automated checks that take minutes to run.",
+        "What does that mean for you? Statistically, your site is one of the 19 unless someone on your team is explicitly checking. The failures are invisible to the people who built the site, because the site works fine for them. It fails for the visitor using a screen reader, the buyer on a slow connection, or the crawler deciding whether you appear in an answer.",
+        "Accessibility is just the measurable example. The same silent-failure pattern exists in performance, in SEO, and now in how AI systems read your site. Which is why one check is never enough, and why we run six."
+      ],
+      "stat": {
+        "value": "94.8%",
+        "label": "Share of the top 1,000,000 home pages with detectable WCAG 2 failures (WebAIM Million, 2025)"
+      }
+    },
+    {
+      "heading": "What are the six passes?",
+      "paragraphs": [
+        "Each pass answers one question a clean compile cannot. Here they are, with a real example of what each one has caught in our own work."
+      ],
+      "table": {
+        "headers": ["Pass", "The question it answers", "A real catch from our own builds"],
+        "rows": [
+          ["1. Code quality", "Will the next developer understand and safely change this?", "Dead code and duplicated logic flagged before they became someone's maintenance debt"],
+          ["2. Performance", "Does it load fast on a real device, on a real connection?", "Below-the-fold sections hydrating independently and dragging the mobile score down"],
+          ["3. Accessibility", "Can someone using a screen reader or keyboard actually use it?", "Low-contrast text, the same failure WebAIM found on 79.1% of home pages"],
+          ["4. SEO", "Can search engines find, read, and rank every page?", "Duplicate titles and metas across pages, invisible in any browser check"],
+          ["5. AI visibility", "Can AI answer engines read, quote, and cite this site?", "Structured data and llms.txt gaps that kept content out of AI answers"],
+          ["6. Human walkthrough", "Does it actually work when a person uses it in a browser?", "Five published articles rendering with blank bodies, on pages every automated pass had cleared"]
+        ]
+      }
+    },
+    {
+      "heading": "Why does the order matter?",
+      "paragraphs": [
+        "The passes run from the inside out. Code quality first, because there is no point performance-tuning code about to be rewritten. Then performance, then accessibility, then SEO, then AI visibility, each layer building on a stable version of the one before it. The human walkthrough goes last, on the finished thing, the way a visitor will actually meet it.",
+        "Run them out of order and you pay twice. Fix SEO before the code settles and the fix gets overwritten. Polish performance before accessibility and the accessible rebuild undoes the tuning. The order is not ceremony, it is the cheapest path through six layers of checking.",
+        "None of the six passes is complicated on its own. The value is in running all six every time, in sequence, instead of trusting that a clean compile means a working product. The discipline, not the difficulty, is the product. And the pass that proves this most reliably is the last one."
+      ],
+      "pullQuote": "The discipline, not the difficulty, is the product."
+    },
+    {
+      "heading": "Measure production, not your dev server",
+      "paragraphs": [
+        "A July 2026 example from our own site rebuild. Our development server reported a Lighthouse SEO score of 92, and we spent real effort chasing the missing 8 points before checking the production build, which scored 100. The gap was a dev-server artifact. The lesson cost an afternoon: audit what users get, not what developers run.",
+        "The same week delivered a sharper lesson in the other direction. Five of our published articles were rendering with completely blank bodies on the live site. The build compiled, every automated pass was green, and the pages looked fine in the component code. The cause was a one-line rendering condition that treated an empty list as valid content. Only reading the live pages, pass six, caught it.",
+        "Two failures, opposite directions, same week. One had us fixing a problem production did not have. The other had automated checks approving a problem production absolutely did have. Between them they are the whole argument for pass six existing."
+      ]
+    },
+    {
+      "heading": "What the audit cannot do",
+      "paragraphs": [
+        "Six passes catch how the site fails. They do not catch whether the site should exist in this form at all: whether the copy persuades, whether the offer is right, whether the page answers the visitor's actual question. Those are judgment calls, and no checklist substitutes for them.",
+        "And the audit is a gate, not a guarantee. The blank-body bug shipped in the first place because a code change landed after the last full audit. The fix is not a smarter checklist, it is re-running the walkthrough after every meaningful change, which we now do. If you want the six passes run against your own site before your next launch, [ask us](/contact), and we will show you exactly what each pass finds."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Why isn't a Lighthouse score enough to verify a launch?",
+      "a": "Lighthouse measures what its automated probes can see, and it can be wrong in both directions. Our own dev server scored 92 on SEO while production scored 100, and pages with blank article bodies passed every automated check. Scores are one input to the audit, never the verdict."
+    },
+    {
+      "q": "What is an AI visibility pass and why does a website need one?",
+      "a": "It checks whether AI answer engines like ChatGPT, Perplexity, and Google AI Overviews can read, quote, and cite your site: structured data, an llms.txt file, self-contained answerable content, and clean entity naming. A growing share of buyers now meets you through an AI answer before ever seeing your homepage."
+    },
+    {
+      "q": "How long does a six-pass audit take?",
+      "a": "For a typical marketing site, the automated passes run in hours, and the human walkthrough takes an afternoon of clicking every page and submitting every form like a real visitor. The expensive part is not the time. It is the discipline of running all six every launch, including the launches that feel too small to need it."
+    },
+    {
+      "q": "Can I run this audit on my own site without a vendor?",
+      "a": "Mostly, yes. Lighthouse and axe cover performance and accessibility, a crawler like Screaming Frog covers SEO, and the human walkthrough just takes honesty and an afternoon. The passes most teams cannot easily self-serve are AI visibility and code quality, which need current tooling knowledge and a reviewer who did not write the code."
+    }
+  ],
+  "ctaLabel": "Ask us to run the six passes on your site",
+  "ctaHref": "/contact"
+}

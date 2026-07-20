@@ -1,0 +1,85 @@
+{
+  "slug": "why-custom-software-still-wins",
+  "readingTime": "6 min read",
+  "updatedAt": "2026-07-20",
+  "keyTakeaways": [
+    "The average organization uses only 54% of the SaaS licenses it pays for (Zylo, 2025). Nearly half of what you buy off the shelf goes unused because it never fit your workflow in the first place.",
+    "Custom software wins in one specific situation: when the 10 workflows your team runs every day are nuanced, multi-step, or specific to your market, and the packaged tool forces workarounds.",
+    "Off-the-shelf is still the right call for commodity work: email, accounting, documents. Build the workflows that differentiate you, buy everything else.",
+    "The starting point is not a feature list. It is a written map of your daily workflows and the exact points where they slow down or create risk."
+  ],
+  "sections": [
+    {
+      "paragraphs": [
+        "Most teams do not start with a software problem. They start with a workflow problem, and it only becomes visible after the spreadsheet, the shared inbox, and the manual follow-up start to break down. Someone forgets a handoff. A record lives in two places and matches in neither. The tool you pay for every month covers 70% of the process, and the remaining 30% lives in someone's head.",
+        "That last 30% is where custom software earns its place. Not because building is fashionable, but because the friction sits exactly where packaged tools cannot reach: the steps specific to how your team, your market, and your rules actually work.",
+        "The pattern shows up across domains. [Manual reconciliation in fintech](/blog/real-cost-of-manual-reconciliation-fintech) looks like routine admin until the hours and the audit trail gap add up. [Packaged ERP](/blog/signs-youve-outgrown-packaged-erp) fits until your operation grows past its assumptions. Same root cause, different department."
+      ]
+    },
+    {
+      "heading": "Why does software you pay for go unused?",
+      "paragraphs": [
+        "Start with a number. [Zylo's 2025 SaaS Management Index](https://zylo.com/news/2025-saas-management-index), built on data from over 40 million licenses, found the average organization uses just 54% of the SaaS licenses it pays for. Almost half of every software budget buys shelf space, not work.",
+        "Why does this happen? Because a packaged tool is designed for the average of a thousand companies, and your company is not the average. The features you need get buried under the features everyone else needed. Your team adapts by exporting to spreadsheets, and the tool becomes an expensive system of record for work being done somewhere else.",
+        "For a 50-person business in Pakistan paying per-seat prices in dollars, the waste stings twice: once in the subscription, and again in the staff hours spent working around it. The Zylo figure describes large US enterprises, so treat it as directional for an SME. The mechanism it exposes, paying for a fit you never get, is the same at any size."
+      ],
+      "stat": {
+        "value": "54%",
+        "label": "Average share of paid SaaS licenses actually used (Zylo SaaS Management Index, 2025)"
+      }
+    },
+    {
+      "heading": "When does custom software actually win?",
+      "paragraphs": [
+        "You do not need every feature a platform offers. You need the ten workflows your team actually runs every day to work without friction. That is the bar custom software has to clear, and it is worth building only when those workflows share certain traits.",
+        "Multi-step approvals with real consequences when a step gets skipped. Rules specific to your jurisdiction, like payroll calculations tied to local labour law, where a generic tool's assumptions are quietly wrong. Handoffs between systems where someone currently re-types data. Exceptions the packaged tool cannot represent, so people handle them off-system where nothing is recorded.",
+        "One test cuts through most of the debate. Write down what your team did between 9am and 11am yesterday. If the packaged tool covered it end to end, keep the tool. If two of those hours went to workarounds, exports, and status-chasing messages, the tool does not fit, and no amount of configuration will change its shape.",
+        "The strongest custom builds are not the most ambitious. They are the ones that fit a real operating rhythm and make the next day easier than the last one. But that logic has a boundary, and knowing where it sits matters as much as knowing the logic."
+      ],
+      "pullQuote": "You do not need every feature a platform offers. You need the ten workflows your team runs every day to work without friction."
+    },
+    {
+      "heading": "When off-the-shelf is still the right call",
+      "paragraphs": [
+        "Some work is commodity work. Email, document storage, general accounting, video calls. These workflows look the same in every company on earth, which is exactly the situation packaged software is built for. Building a custom email client would be a waste of your money, and we would tell you so in the first call.",
+        "The honest dividing line: build the workflows where your way of working is the advantage. Buy everything where it is not. A business that builds everything burns its budget on undifferentiated plumbing. A business that buys everything runs its differentiating work through tools shaped for someone else.",
+        "We hold ourselves to the same line, which is easiest to show with a decision from inside our own company."
+      ]
+    },
+    {
+      "heading": "What this looked like inside Bitsbuffer",
+      "paragraphs": [
+        "In 2026 we were paying for a social media scheduling tool. Fine product. Wrong shape. We manage four brand surfaces with three distinct voices, and every post runs through an internal approval step before it ships. The tool had no concept of any of this, so the real workflow lived in chat threads and a spreadsheet, and the tool just did the final upload.",
+        "So we started building our own media manager in-house. Scheduling, the approval flow, and the multi-brand structure modeled the way we actually work, not the way a generic tool assumes. It is honest to say it is still in progress: three platform integrations are done and one is pending as of July 2026. We are our own first client, and the friction it removes each week is the same friction we watch client teams tolerate for years.",
+        "The lesson was not that building is always right. We still buy plenty of software. The lesson was that the decision follows the workflow, and once we mapped ours on paper, the answer was obvious in both directions."
+      ]
+    },
+    {
+      "heading": "Getting started: the right sequence",
+      "paragraphs": [
+        "First, map the ten workflows your team runs daily. On paper, with names and handoffs, not from memory. Second, mark every point where work leaves the system: an export, a re-type, a chat message asking for status. Third, sort those friction points into commodity and differentiating. Fourth, fix the commodity gaps with better configuration or a better packaged tool. Only what survives all four steps is a candidate for a custom build.",
+        "That sequence protects you from the expensive mistake in either direction: building what you should have bought, or renewing for another year what you should have replaced. If you want a second pair of eyes on the map, [talk to us](/contact). If the answer is keep your current tools, we will say so."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is custom software worth it for a small business?",
+      "a": "It depends on where your friction sits, not on your headcount. A 20-person business with a genuinely specific core workflow, like local-law payroll or multi-party logistics, gets more from one focused custom build than a 500-person business buying its fourth overlapping SaaS tool. Start with the workflow map, not the budget."
+    },
+    {
+      "q": "How do I know if we have outgrown our current tools?",
+      "a": "Count the workarounds. When your team maintains spreadsheets that shadow the official tool, re-types data between systems, or handles exceptions in chat because the tool cannot represent them, the tool no longer fits. The spreadsheet count is a more honest signal than any feature comparison."
+    },
+    {
+      "q": "Should we replace everything at once or one workflow at a time?",
+      "a": "One workflow at a time, starting with the one that carries the most risk or eats the most hours. A working system for your worst workflow beats a grand plan for all of them. Each shipped piece also teaches you things the plan could not, which makes the next piece cheaper."
+    },
+    {
+      "q": "What does custom software cost compared to SaaS subscriptions?",
+      "a": "A build costs more upfront and less over time, but the honest comparison includes what the subscription hides: unused licenses, the staff hours spent on workarounds, and per-seat fees that grow with your team. Price your current tools at their true cost, workaround hours included, before comparing."
+    }
+  ],
+  "ctaLabel": "Talk to us about the workflow your tools don't fit",
+  "ctaHref": "/contact"
+}
