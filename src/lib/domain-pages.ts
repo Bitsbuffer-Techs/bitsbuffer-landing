@@ -113,7 +113,11 @@ export const domainPages: DomainPage[] = [
         alt: 'Returns and support dashboard next to a packed return box with shipping label',
       },
     ],
-    proof: { kind: 'case-study', slugs: ['quick-wrap-gifts', 'mutishop', 'smart-list'] },
+    proof: {
+      kind: 'capability',
+      statement:
+        'We have shipped production ecommerce builds: storefronts, custom checkouts, integrated payment gateways, and inventory logic tied to fulfilment. We walk through shipped work relevant to your build in discovery, scoped to what your store actually needs.',
+    },
     faqs: [
       {
         q: 'Do you build on an existing platform or from scratch?',
@@ -187,7 +191,11 @@ export const domainPages: DomainPage[] = [
         alt: 'Ledger and accounting dashboard with matched line items',
       },
     ],
-    proof: { kind: 'case-study', slugs: ['tradelink360'] },
+    proof: {
+      kind: 'capability',
+      statement:
+        'We have shipped production fintech work, including a cross-border trade finance and payments platform: reconciliation across partners and currencies, audit trails built in from day one. We walk through relevant shipped work in discovery.',
+    },
     faqs: [
       {
         q: 'How do you handle compliance and audit requirements?',
@@ -199,7 +207,7 @@ export const domainPages: DomainPage[] = [
       },
       {
         q: 'Do you have fintech experience specifically, or just general software?',
-        a: 'TradeLink360, a cross-border trade finance and payments platform, is a real shipped project, see our case studies. We scope every fintech engagement through discovery first, the same way.',
+        a: 'Yes, real fintech projects have shipped, including a cross-border trade finance and payments platform. We walk through relevant shipped work in discovery, and we scope every fintech engagement the same way: discovery first.',
       },
       {
         q: 'Is the software PCI-DSS compliant if it touches card data?',
@@ -261,11 +269,15 @@ export const domainPages: DomainPage[] = [
         alt: 'Hand holding a phone showing a Smart Farm weather and soil advisory app, with a field weather station in the background',
       },
     ],
-    proof: { kind: 'case-study', slugs: ['kissan-connect'] },
+    proof: {
+      kind: 'capability',
+      statement:
+        'We have shipped a production agri-tech platform built specifically for smallholder and marginal farmers: simple inputs designed for limited literacy and connectivity, field-level records instead of a dashboard built for a data analyst. We walk through relevant shipped work in discovery.',
+    },
     faqs: [
       {
         q: 'Does this work for farmers without reliable internet or literacy with software?',
-        a: 'Kissan Connect, one of our shipped projects, was built specifically for smallholder and marginal farmers with limited literacy and resource access. Simple, field-first design is the starting point, not an afterthought.',
+        a: 'Yes. We built a shipped agri-tech platform specifically for smallholder and marginal farmers with limited literacy and resource access. Simple, field-first design is the starting point, not an afterthought.',
       },
       {
         q: 'Can you track data per field or per animal, not just per farm?',
@@ -335,7 +347,11 @@ export const domainPages: DomainPage[] = [
         alt: 'HR and payroll records connected to the same ERP core as finance and attendance',
       },
     ],
-    proof: { kind: 'case-study', slugs: ['prize-erp'] },
+    proof: {
+      kind: 'capability',
+      statement:
+        'We have shipped a production ERP platform for internet service providers: orders, invoicing, sales, and revenue management built around the actual ISP workflow rather than a generic template. We walk through relevant shipped work in discovery.',
+    },
     faqs: [
       {
         q: 'We already have an ERP, can you extend it instead of replacing it?',
@@ -347,7 +363,7 @@ export const domainPages: DomainPage[] = [
       },
       {
         q: 'Do you have real ERP projects to point to?',
-        a: 'Prize ERP is a real shipped project, an order, invoice, sales, and revenue management platform built for internet service providers. See our case studies.',
+        a: 'Yes. A shipped example: an order, invoice, sales, and revenue management platform built for internet service providers. We walk through relevant shipped work in discovery.',
       },
       {
         q: 'How does custom ERP compare in cost to SAP or NetSuite?',
@@ -412,7 +428,7 @@ export const domainPages: DomainPage[] = [
     proof: {
       kind: 'capability',
       statement:
-        "We haven't shipped a named healthcare case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process behind every named case study in our other domains, and access logs and audit trails treated as a design requirement from day one, not a compliance patch applied after the fact.",
+        "We haven't shipped a named healthcare case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process we run on every shipped build, and access logs and audit trails treated as a design requirement from day one, not a compliance patch applied after the fact.",
     },
     faqs: [
       {
@@ -490,7 +506,7 @@ export const domainPages: DomainPage[] = [
     proof: {
       kind: 'capability',
       statement:
-        "We haven't shipped a named logistics case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process behind every named case study in our other domains, applied to how your fleet, warehouse, or route network actually runs.",
+        "We haven't shipped a named logistics case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process we run on every shipped build, applied to how your fleet, warehouse, or route network actually runs.",
     },
     faqs: [
       {
@@ -503,7 +519,7 @@ export const domainPages: DomainPage[] = [
       },
       {
         q: 'Have you shipped a named logistics project?',
-        a: "Not yet under a named case study, and we won't claim one we haven't shipped. We scope every logistics engagement through the same discovery-first process as our named case studies in other domains, and we're upfront about that when a decision depends on it.",
+        a: "Not yet under a named case study, and we won't claim one we haven't shipped. We scope every logistics engagement through the same discovery-first process as every build we ship, and we're upfront about that when a decision depends on it.",
       },
       {
         q: 'Should we build route optimization ourselves or buy it?',
@@ -568,7 +584,7 @@ export const domainPages: DomainPage[] = [
     proof: {
       kind: 'capability',
       statement:
-        "We haven't shipped a named edtech case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process behind every named case study in our other domains, applied to how your institution actually runs a term.",
+        "We haven't shipped a named edtech case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process we run on every shipped build, applied to how your institution actually runs a term.",
     },
     faqs: [
       {
@@ -646,7 +662,7 @@ export const domainPages: DomainPage[] = [
     proof: {
       kind: 'capability',
       statement:
-        "We haven't shipped a named real estate case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process behind every named case study in our other domains, applied to how your brokerage or portfolio actually runs.",
+        "We haven't shipped a named real estate case study yet, and we won't claim one we don't have. What we do bring: the same discovery-first process we run on every shipped build, applied to how your brokerage or portfolio actually runs.",
     },
     faqs: [
       {

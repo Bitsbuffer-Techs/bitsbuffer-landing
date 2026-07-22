@@ -24,6 +24,25 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  // Case Studies muted sitewide 2026-07-22 (Adnan): all links removed
+  // (Header, Footer, About, /services featured grid, domain-page proofs)
+  // and the routes 301 to home so indexed URLs pass equity back instead
+  // of 404ing. Delete this block plus the sitemap exclude and restore the
+  // removed links to bring the section back.
+  async redirects() {
+    return [
+      {
+        source: '/case-studies',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/case-studies/:slug*',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

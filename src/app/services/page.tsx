@@ -4,7 +4,6 @@ import PageSchema from '@/components/seo/PageSchema';
 import ServicesHero from '@/components/sections/ServicesHero';
 import ServicesOfferingsSection from '@/components/sections/ServicesOfferingsSection';
 import PlatformOverviewSection from '@/components/sections/PlatformOverviewSection';
-import FeaturedProjectsSection from '@/components/sections/FeaturedProjectsSection';
 import QualityAuditSection from '@/components/sections/QualityAuditSection';
 import ServicesFAQSection from '@/components/sections/ServicesFAQSection';
 import FinalCTASection from '@/components/sections/FinalCTASection';
@@ -41,7 +40,7 @@ export default function ServicesPage() {
       <ServicesHero />
       <ServicesOfferingsSection />
       <PlatformOverviewSection />
-      <FeaturedProjectsSection />
+      {/* FeaturedProjectsSection removed 2026-07-22: case studies muted sitewide. */}
       <div id="audit">
         <QualityAuditSection />
       </div>

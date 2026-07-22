@@ -16,7 +16,6 @@
 ## Pages
 
 - [Services](https://bitsbuffer.com/services): Custom software development scoped through discovery, built and audited the same way Workflow Engine is.
-- [Case Studies](https://bitsbuffer.com/case-studies): Real production projects, including Quick Wrap Gifts, Mutishop, Sikhaid Global, Prize ERP, SEO Dashboard, Smart List, TradeLink360, Kissan Connect, and Love Anew.
 - [Blog](https://bitsbuffer.com/blog): Writing on software strategy, product delivery, and operations.
 - [About](https://bitsbuffer.com/about): Who Bitsbuffer is and how the studio works.
 - [Careers](https://bitsbuffer.com/careers): Open roles at Bitsbuffer.

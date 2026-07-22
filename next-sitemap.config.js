@@ -10,5 +10,7 @@ module.exports = {
   // the sitemap. src/app/admin/layout.tsx also sets robots noindex as a
   // second layer, this is belt-and-suspenders in case next-sitemap ever
   // picks up dynamic /admin routes.
-  exclude: ['/admin', '/admin/*'],
+  // Case studies muted 2026-07-22: routes 301 to home (next.config.ts),
+  // so they must not appear in the sitemap either.
+  exclude: ['/admin', '/admin/*', '/case-studies', '/case-studies/*'],
 };

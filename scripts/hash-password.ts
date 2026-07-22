@@ -14,13 +14,28 @@ async function main() {
     process.exit(1);
   }
   const hash = await bcrypt.hash(password, 12);
-  // Dollar signs escaped (\$) -- Next.js's env loader does $VAR expansion,
-  // which silently corrupts an unescaped bcrypt hash on load (bit us on
-  // 07-18: login failed with no error explaining why). Paste the escaped
-  // version below, not the raw bcrypt output.
+  // Two variants, because two different things read this value and only
+  // one of them parses $ specially:
+  //   - Next.js's OWN .env / .env.local file loader does $VAR-style
+  //     expansion on unescaped $, corrupting a raw bcrypt hash on load
+  //     (bit us 07-18). Use the ESCAPED (\$) version there.
+  //   - Hosting panel env-var UIs (Hostinger, Vercel, Docker, etc.) set
+  //     process.env directly with no file parsing step at all, so a \$
+  //     lands as a literal backslash in the value and the hash no longer
+  //     matches anything (bit us 07-22, login failed silently in prod
+  //     because ADMIN_PASSWORD_HASH ?? '' in the login route uses
+  //     whatever string it's given with no unescaping). Use the RAW
+  //     version there.
   const escaped = hash.replace(/\$/g, '\\$');
-  console.log('\nADMIN_PASSWORD_HASH=' + escaped + '\n');
-  console.log('Paste that line into .env.local (replacing the old ADMIN_PASSWORD_HASH line), then restart `npm run dev`.');
+  console.log('\n--- For .env.local (Next.js parses $ expansion in this file) ---');
+  console.log('ADMIN_PASSWORD_HASH=' + escaped);
+  console.log('\n--- For a hosting panel env var field: Hostinger, Vercel, Docker, etc. (raw process env, no $ parsing) ---');
+  console.log('ADMIN_PASSWORD_HASH=' + hash);
+  console.log(
+    '\nUse the top one only inside .env.local, then restart `npm run dev`.' +
+      '\nUse the bottom one anywhere env vars are set directly through a hosting UI, then redeploy/restart that service.' +
+      '\nDo not mix them up, and check the pasted value has no leading/trailing whitespace or line break.'
+  );
 }
 
 main();

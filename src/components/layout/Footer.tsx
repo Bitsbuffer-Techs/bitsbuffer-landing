@@ -126,7 +126,6 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm">
             <li><Link href="/services" className="text-text-secondary hover:text-text-primary">Custom Development</Link></li>
-            <li><Link href="/case-studies" className="text-text-secondary hover:text-text-primary">Case Studies</Link></li>
             <li>
               <a
                 href={siteConfig.flagshipProduct.url}

@@ -48,7 +48,7 @@ export default function AboutPage() {
         subtext="Bitsbuffer is a Pakistan-based studio that has spent years building production software for real clients. Workflow Engine is the product that grew out of that work."
         ctaLabel="Start a project"
         ctaHref="/contact"
-        secondaryLink={{ label: 'See our case studies', href: '/case-studies' }}
+        secondaryLink={{ label: 'Read our blog', href: '/blog' }}
         stats={STATS}
       />
       <AboutOriginSection />

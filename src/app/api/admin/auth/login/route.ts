@@ -25,6 +25,23 @@ export async function POST(request: Request) {
   const adminEmail = (process.env.ADMIN_EMAIL ?? '').trim().toLowerCase();
   const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH ?? '';
 
+  // TEMPORARY diagnostic, 2026-07-22 (Adnan): login kept failing on
+  // Hostinger after the hash was updated, with no way to tell from outside
+  // whether the server had a stale value, a mismatched ADMIN_EMAIL, or a
+  // mangled paste (wrapping quotes, trailing whitespace/newline). Logs the
+  // shape of both values, never the real password or hash. Remove this
+  // block once login is confirmed working.
+  console.log('[admin/auth/login][DIAGNOSTIC]', {
+    adminEmailRaw: JSON.stringify(process.env.ADMIN_EMAIL ?? ''),
+    adminEmailLength: (process.env.ADMIN_EMAIL ?? '').length,
+    hashLength: adminPasswordHash.length,
+    hashPrefix: adminPasswordHash.slice(0, 7),
+    hashSuffix: adminPasswordHash.slice(-6),
+    hashHasBackslash: adminPasswordHash.includes('\\'),
+    hashHasQuote: adminPasswordHash.includes('"') || adminPasswordHash.includes("'"),
+    hashStartsEndsClean: /^\$2[aby]\$\d{2}\$/.test(adminPasswordHash) && !/\s/.test(adminPasswordHash),
+  });
+
   if (!adminEmail || !adminPasswordHash) {
     console.error('[admin/auth/login] ADMIN_EMAIL or ADMIN_PASSWORD_HASH not set in .env.local');
     return NextResponse.json({ error: 'Admin login is not configured yet' }, { status: 500 });

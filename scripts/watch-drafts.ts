@@ -112,7 +112,13 @@ async function main() {
 
   try {
     await connectToDatabase();
-    console.log('[watch-drafts] Connected to MongoDB.');
+    // 2026-07-22: log which host/db this process is actually talking to
+    // (never the credentials) -- added after a restart silently kept
+    // reconnecting to a stale local instance instead of the newly-set
+    // live MONGODB_URI, and there was no way to see that from the logs.
+    const uri = process.env.MONGODB_URI ?? '';
+    const masked = uri.replace(/\/\/[^@]+@/, '//<credentials>@');
+    console.log(`[watch-drafts] Connected to MongoDB: ${masked}`);
   } catch (err) {
     console.error(
       '[watch-drafts] Could not connect to MongoDB. Is it running locally? ' +
