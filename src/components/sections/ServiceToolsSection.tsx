@@ -127,18 +127,32 @@ const FILTERS: { key: FilterKey; label: string }[] = [
   { key: 'finance', label: 'Finance' },
 ];
 
-// Same generic, brand-safe HR-tech graphic used elsewhere for Workflow
-// Engine, reused across HRMS/CRM/Finance rather than reaching for
-// domain-tagged photography built for the blog/services pages (those
-// images' alt text and context are specific to those pages, not this
-// one). social-media.jpg is the one exception, it is genuinely generic
-// platform-icon art already used for the same "social media" idea
-// elsewhere on the site.
+// Per-module deep links into the real Workflow Engine site (2026-07-23,
+// Adnan's call) -- every card used to link to the same wfengine.com
+// homepage regardless of which tab was active, both here and in the
+// removed per-tool "Explore the module" links (see below). Confirmed
+// against wfengine-landing/newWfengine/src/app/modules/*: all four pages
+// (hrms, finance, crm, social-media) already exist on the real site.
+const MODULE_PATHS: Record<FilterKey, string> = {
+  hrms: '/modules/hrms',
+  socialmedia: '/modules/social-media',
+  crm: '/modules/crm',
+  finance: '/modules/finance',
+};
+
+// Real photography for all four cards (2026-07-23, Adnan's call) -- CRM
+// and Finance were still sharing the same generic HR-tech icon graphic
+// after the HRMS swap, which read as a mistake once HRMS looked
+// different. Reused from images already sourced for
+// SolutionsExplorerSection rather than uploading anything new: the
+// Chargebee-style MRR/revenue dashboard already fits "Finance" better
+// than it fit Real Estate valuation, and the office/CRM-spreadsheet shot
+// was already shot for a "Listings & CRM" scenario.
 const FEATURED: Record<FilterKey, { body: string; image: string; alt: string }> = {
   hrms: {
     body: 'The module running Bitsbuffer’s own people operations today: attendance, payroll, and team calendars for a 21 to 50 person team.',
-    image: '/images/wfengine003.png',
-    alt: 'Workflow Engine HR technology graphic',
+    image: '/images/strategy-ceo-hr.jpeg',
+    alt: 'Bitsbuffer leadership working together at a table in the studio, with a "Your Technology Partner" banner behind them',
   },
   socialmedia: {
     body: 'A planned Workflow Engine module for scheduling and publishing content from the same platform as HRMS, CRM, and Finance. Scope and launch timing are still being defined.',
@@ -147,13 +161,13 @@ const FEATURED: Record<FilterKey, { body: string; image: string; alt: string }> 
   },
   crm: {
     body: 'Contacts and sales pipeline, built for teams who outgrew a spreadsheet, on the same engine as every other module.',
-    image: '/images/wfengine003.png',
-    alt: 'Workflow Engine HR technology graphic',
+    image: '/images/realestate-listings-crm.jpg',
+    alt: 'An office team working at desks with a laptop showing a tracked product spreadsheet in the foreground',
   },
   finance: {
     body: 'Invoicing, expenses, and revenue tracking built on the same workflow engine as HRMS, so the numbers never need reconciling between two systems.',
-    image: '/images/wfengine003.png',
-    alt: 'Workflow Engine HR technology graphic',
+    image: '/images/realestate-reporting-valuation.jpg',
+    alt: 'A laptop screen showing a revenue and subscriptions reporting dashboard with charts',
   },
 };
 
@@ -225,17 +239,24 @@ export default function ServiceToolsSection() {
                   </h3>
                   <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">{featured.body}</p>
                   <a
-                    href={siteConfig.flagshipProduct.url}
+                    href={`${siteConfig.flagshipProduct.url}${MODULE_PATHS[filter]}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-semibold text-accent-bright hover:text-accent"
                   >
-                    Explore {activeLabel} in {siteConfig.flagshipProduct.name}
+                    Explore {activeLabel} on {siteConfig.flagshipProduct.name}
                     <ArrowRight className="inline w-3.5 h-3.5 ml-1" aria-hidden="true" />
                   </a>
                 </div>
               </div>
 
+              {/* No per-card link here on purpose (2026-07-23, Adnan's call):
+                  every one of these used to repeat the same "Explore the
+                  module" link to the same wfengine.com homepage, four times
+                  per tab -- redundant with the section's own top-level
+                  "Visit Workflow Engine" link and the featured card's
+                  module-specific one just above. Two links per tab (one
+                  site-wide, one module-specific) is enough. */}
               <div className="grid sm:grid-cols-2 gap-5">
                 {tools.map((tool) => (
                   <div key={tool.key} className="card flex flex-col">
@@ -245,16 +266,7 @@ export default function ServiceToolsSection() {
                         {tool.badge}
                       </span>
                     </div>
-                    <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">{tool.body}</p>
-                    <a
-                      href={siteConfig.flagshipProduct.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-semibold text-accent-bright hover:text-accent"
-                    >
-                      Explore the module
-                      <ArrowRight className="inline w-3.5 h-3.5 ml-1" aria-hidden="true" />
-                    </a>
+                    <p className="text-sm text-text-secondary leading-relaxed flex-1">{tool.body}</p>
                   </div>
                 ))}
               </div>
