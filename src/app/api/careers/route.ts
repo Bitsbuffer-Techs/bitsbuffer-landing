@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { siteConfig } from '@/lib/site-config';
 
 // Nodemailer uses the Node.js `net` module under the hood, and this route
 // also reads the resume upload into a Buffer for the email attachment --
@@ -195,6 +196,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: smtpUser,
       to: RECIPIENT,
+      cc: siteConfig.contact.cc,
       replyTo: email,
       subject: `New application: ${role} · ${name}`,
       html: buildEmailHtml({

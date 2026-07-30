@@ -154,6 +154,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: smtpUser,
       to: siteConfig.contact.email,
+      cc: siteConfig.contact.cc,
       replyTo: email,
       subject: `New Bitsbuffer inquiry from ${name}`,
       html: buildEmailHtml({ name, email, company, message, submittedAt }),

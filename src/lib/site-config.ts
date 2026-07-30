@@ -34,15 +34,18 @@ export const siteConfig = {
   industriesList:
     'e-commerce, fintech, ERP, agri-tech, healthcare, logistics, edtech, and real estate',
   contact: {
-    // Was 'hello@bitsbuffer.com' until 2026-07-17: mail sent there never
-    // arrived because it was never actually set up as a real mailbox,
-    // Adnan confirmed all mail should land at hr@bitsbuffer.com instead
-    // (teams@bitsbuffer.com is the confirmed sending account, SMTP_USER
-    // in .env.local). Single source of truth, so this one change updates
-    // the displayed mailto link on /contact and the Footer, the
-    // Organization schema in layout.tsx, and /api/contact's recipient,
-    // all at once.
-    email: 'hr@bitsbuffer.com',
+    // hello@bitsbuffer.com is now a real, monitored mailbox again as of
+    // 2026-07-30 (Adnan) -- back to being the general contact address and
+    // /api/contact's recipient. hr@bitsbuffer.com stays the careers-only
+    // address (hardcoded separately in /api/careers/route.ts, not read
+    // from here on purpose, see that file's own comment). Single source
+    // of truth for the general address, so this one change updates the
+    // displayed mailto link on /contact and the Footer, the Organization
+    // schema in layout.tsx, and /api/contact's recipient, all at once.
+    email: 'hello@bitsbuffer.com',
+    // CC'd on both /api/contact and /api/careers submissions (Adnan,
+    // 2026-07-30), on top of whichever address is the primary recipient.
+    cc: 'adnan.khan@bitsbuffer.com',
     // Updated 2026-07-23 (Adnan): Lahore landline, +92 country code with
     // the trunk 0 dropped per standard international format.
     phone: '+92 42 32487796',
