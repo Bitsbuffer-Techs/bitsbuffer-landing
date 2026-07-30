@@ -34,13 +34,7 @@ fi
 echo "Installing production dependencies..."
 cd "$RELEASE_DIR"
 
-if ! command -v pnpm >/dev/null 2>&1; then
-    echo "pnpm not found. Enabling via corepack..."
-    corepack enable
-    corepack prepare pnpm@9 --activate
-fi
-
-pnpm install --prod --frozen-lockfile
+npm ci --omit=dev
 
 # Switch current release
 echo "Switching release..."
