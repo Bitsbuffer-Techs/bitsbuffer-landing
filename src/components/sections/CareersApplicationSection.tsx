@@ -3,6 +3,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { ArrowRight, CheckCircle2, Mail, Paperclip } from 'lucide-react';
 import CornerDots from '@/components/ui/CornerDots';
+import { siteConfig } from '@/lib/site-config';
 
 // Replaces FinalCTASection on /careers, 2026-07-17, Adnan's call: closing
 // a careers page on "Tell us what you are building" (FinalCTASection's
@@ -129,9 +130,13 @@ export default function CareersApplicationSection() {
             need, see the roles above, so tell us honestly where you fit, even if nothing is posted right now.
           </p>
           <div className="mt-6 space-y-4 text-sm text-text-secondary">
-            <a href="mailto:hr@bitsbuffer.com" className="flex items-center gap-3 hover:text-text-primary">
+            {/* Displayed address is always the general hello@ mailbox
+                (Adnan, 2026-07-30) -- form submissions still route to
+                hr@bitsbuffer.com behind the scenes, see /api/careers'
+                own RECIPIENT constant, unchanged. */}
+            <a href={`mailto:${siteConfig.contact.email}`} className="flex items-center gap-3 hover:text-text-primary">
               <Mail className="h-4 w-4 text-accent flex-shrink-0" aria-hidden="true" />
-              <span>hr@bitsbuffer.com</span>
+              <span>{siteConfig.contact.email}</span>
             </a>
           </div>
           <p className="mt-6 text-sm leading-relaxed text-text-secondary">
