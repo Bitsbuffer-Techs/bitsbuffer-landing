@@ -17,19 +17,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: npm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Generate version file
         run: |
@@ -44,7 +39,7 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           APP_COMMIT: ${{ github.sha }}
           APP_BUILD_TIME: ${{ github.run_started_at }}
-        run: pnpm build
+        run: npm run build
 
       - name: Create deployment package
         run: |
@@ -52,7 +47,7 @@ jobs:
             .next \
             public \
             package.json \
-            pnpm-lock.yaml \
+            package-lock.json \
             next.config.ts \
             ecosystem.config.js \
             .build-info
