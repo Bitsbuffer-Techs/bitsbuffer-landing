@@ -1,0 +1,79 @@
+name: Deploy Bitsbuffer Landing Page
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate version file
+        run: |
+          echo "APP_COMMIT=${GITHUB_SHA::7}" > .build-info
+          echo "APP_BUILD_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> .build-info
+
+      # NEXT_PUBLIC_* are inlined at build time — set them here, not only on the server.
+      - name: Build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          NEXT_PUBLIC_SITE_URL: https://bitsbuffer.com
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          APP_COMMIT: ${{ github.sha }}
+          APP_BUILD_TIME: ${{ github.run_started_at }}
+        run: pnpm build
+
+      - name: Create deployment package
+        run: |
+          tar -czf deployment.tar.gz \
+            .next \
+            public \
+            package.json \
+            pnpm-lock.yaml \
+            next.config.ts \
+            ecosystem.config.js \
+            .build-info
+
+      - name: Copy package to DigitalOcean
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          port: ${{ secrets.DO_PORT }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          source: deployment.tar.gz,deploy.sh
+          target: /tmp
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          port: ${{ secrets.DO_PORT }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            install -m 755 /tmp/deploy.sh /var/www/bitsbuffer-landing-page/deploy.sh
+            /var/www/bitsbuffer-landing-page/deploy.sh
