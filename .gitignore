@@ -33,3 +33,9 @@ yarn-error.log*
 # imported/rejected files are local working state, not source
 /content-drafts/imported/
 /content-drafts/rejected/
+
+# manual test/audit run output (Lighthouse, axe-core, screenshots, server
+# logs) -- 43MB of one-off artifacts, not source, not read by the app.
+# Removed 2026-07-30: was skewing this repo's GitHub language stats to
+# 95%+ HTML purely from committed Lighthouse report bytes.
+/audit/

@@ -39,12 +39,15 @@ const ICONS = {
   Building2,
 } as const;
 
+// Home and Services render explicitly in the JSX below (Services is a
+// dropdown, not a plain link, so it can't live in this array) -- this
+// list is just the plain links that come after them, in nav order:
+// Home, Services, About, Blog, Careers.
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
   // Case Studies muted sitewide 2026-07-22 (Adnan): pages redirect to /,
   // links removed everywhere. Restore this entry to bring the nav link back.
   { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
   { label: 'Careers', href: '/careers' },
 ];
 
@@ -88,6 +91,13 @@ export default function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7" aria-label="Main navigation">
+          <Link
+            href="/"
+            className="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary"
+          >
+            Home
+          </Link>
+
           <div className="relative" ref={servicesRef}>
             <button
               type="button"
@@ -187,6 +197,14 @@ export default function Header() {
           className="lg:hidden border-t border-border bg-bg px-5 py-4 space-y-3"
           aria-label="Mobile navigation"
         >
+          <Link
+            href="/"
+            className="block text-sm font-medium text-text-secondary py-1.5"
+            onClick={() => setOpen(false)}
+          >
+            Home
+          </Link>
+
           <div>
             <button
               type="button"
