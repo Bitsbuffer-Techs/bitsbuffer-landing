@@ -40,7 +40,9 @@ const ServiceToolsSection = dynamic(() => import('@/components/sections/ServiceT
 const ProblemSolutionSection = dynamic(() => import('@/components/sections/ProblemSolutionSection'));
 const TransformWorkSection = dynamic(() => import('@/components/sections/TransformWorkSection'));
 const DarkScaleSection = dynamic(() => import('@/components/sections/DarkScaleSection'));
-const TeamProofSection = dynamic(() => import('@/components/sections/TeamProofSection'));
+// TeamProofSection hidden 2026-07-23 (Adnan's call): section is being
+// rebuilt, not deleted. Component file is untouched -- re-add the import
+// and the <Suspense> block below to bring it back.
 const QualityAuditSection = dynamic(() => import('@/components/sections/QualityAuditSection'));
 // FAQ carries FAQPage schema + visible copy that matters for GEO/AEO --
 // kept server-rendered, never deferred.
@@ -146,9 +148,6 @@ export default function HomePage() {
       </Suspense>
       <Suspense fallback={skeleton(256)}>
         <DarkScaleSection />
-      </Suspense>
-      <Suspense fallback={skeleton(384)}>
-        <TeamProofSection />
       </Suspense>
       <Suspense fallback={skeleton(256)}>
         <QualityAuditSection />

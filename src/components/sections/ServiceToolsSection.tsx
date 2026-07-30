@@ -140,19 +140,18 @@ const MODULE_PATHS: Record<FilterKey, string> = {
   finance: '/modules/finance',
 };
 
-// Real photography for all four cards (2026-07-23, Adnan's call) -- CRM
-// and Finance were still sharing the same generic HR-tech icon graphic
-// after the HRMS swap, which read as a mistake once HRMS looked
-// different. Reused from images already sourced for
-// SolutionsExplorerSection rather than uploading anything new: the
-// Chargebee-style MRR/revenue dashboard already fits "Finance" better
-// than it fit Real Estate valuation, and the office/CRM-spreadsheet shot
-// was already shot for a "Listings & CRM" scenario.
+// Real photography for all four cards. CRM and Finance both show a
+// device/dashboard screen, not people -- HRMS originally matched that
+// with a generic HR-tech icon graphic, then briefly swapped to a real
+// team photo (2026-07-23), which broke the visual consistency with the
+// other three tabs. Reset to the same style as CRM/Finance: a real
+// payroll-dashboard screen (reused from SolutionsExplorerSection's ERP
+// tab), not a people photo.
 const FEATURED: Record<FilterKey, { body: string; image: string; alt: string }> = {
   hrms: {
     body: 'The module running Bitsbuffer’s own people operations today: attendance, payroll, and team calendars for a 21 to 50 person team.',
-    image: '/images/strategy-ceo-hr.jpeg',
-    alt: 'Bitsbuffer leadership working together at a table in the studio, with a "Your Technology Partner" banner behind them',
+    image: '/images/erp-hr-payroll.jpg',
+    alt: 'Someone reviewing a payroll dashboard with employee records on a tablet',
   },
   socialmedia: {
     body: 'A planned Workflow Engine module for scheduling and publishing content from the same platform as HRMS, CRM, and Finance. Scope and launch timing are still being defined.',
