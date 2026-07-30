@@ -2,7 +2,7 @@
 
 set -e
 
-APP_DIR="/var/www/wfengine-landing-page"
+APP_DIR="/var/www/bitsbuffer-landing-page"
 RELEASES_DIR="$APP_DIR/releases"
 SHARED_DIR="$APP_DIR/shared"
 
@@ -56,7 +56,7 @@ echo "Waiting for application..."
 HTTP_CODE="000"
 for i in 1 2 3 4 5 6; do
     sleep 5
-    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3005/ || true)
+    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3010/ || true)
     echo "Health check attempt $i: HTTP $HTTP_CODE"
     if [ "$HTTP_CODE" = "200" ]; then
         break

@@ -1,4 +1,4 @@
-name: Deploy WfEngine Landing Page
+name: Deploy Bitsbuffer Landing Page
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
       - name: Build
         env:
           NODE_OPTIONS: --max-old-space-size=4096
-          NEXT_PUBLIC_SITE_URL: https://wfengine.com
+          NEXT_PUBLIC_SITE_URL: https://bitsbuffer.com
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           APP_COMMIT: ${{ github.sha }}
           APP_BUILD_TIME: ${{ github.run_started_at }}
@@ -51,7 +51,6 @@ jobs:
           tar -czf deployment.tar.gz \
             .next \
             public \
-            src/content \
             package.json \
             pnpm-lock.yaml \
             next.config.ts \
@@ -76,5 +75,5 @@ jobs:
           port: ${{ secrets.DO_PORT }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            install -m 755 /tmp/deploy.sh /var/www/wfengine-landing-page/deploy.sh
-            /var/www/wfengine-landing-page/deploy.sh
+            install -m 755 /tmp/deploy.sh /var/www/bitsbuffer-landing-page/deploy.sh
+            /var/www/bitsbuffer-landing-page/deploy.sh

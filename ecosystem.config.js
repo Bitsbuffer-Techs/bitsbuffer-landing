@@ -1,10 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: 'wfengine-landing-page',
-      cwd: '/var/www/wfengine-landing-page/current',
+      name: 'bitsbuffer-landing-page',
+      cwd: '/var/www/bitsbuffer-landing-page/current',
       script: 'node_modules/next/dist/bin/next',
-      args: 'start -p 3005',
+      args: 'start -p 3010',
       instances: 1,
       exec_mode: 'fork',
       autorestart: true,
@@ -12,7 +12,7 @@ module.exports = {
       max_memory_restart: '512M',
       env: {
         NODE_ENV: 'production',
-        PORT: 3005,
+        PORT: 3010,
       },
     },
   ],
