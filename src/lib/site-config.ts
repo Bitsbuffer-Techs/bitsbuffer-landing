@@ -43,7 +43,9 @@ export const siteConfig = {
     // Organization schema in layout.tsx, and /api/contact's recipient,
     // all at once.
     email: 'hr@bitsbuffer.com',
-    phone: '+92 0606-412096',
+    // Updated 2026-07-23 (Adnan): Lahore landline, +92 country code with
+    // the trunk 0 dropped per standard international format.
+    phone: '+92 42 32487796',
     // Lahore is the primary address as of 2026-07-20 (Adnan's call),
     // matching the WF Engine site's schema exactly (same building, same
     // postal code). Layyah remains the secondary office in the

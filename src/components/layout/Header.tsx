@@ -40,6 +40,7 @@ const ICONS = {
 } as const;
 
 const NAV_LINKS = [
+  { label: 'Home', href: '/' },
   // Case Studies muted sitewide 2026-07-22 (Adnan): pages redirect to /,
   // links removed everywhere. Restore this entry to bring the nav link back.
   { label: 'Blog', href: '/blog' },
