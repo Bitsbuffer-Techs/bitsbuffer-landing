@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { siteConfig } from '@/lib/site-config';
-import PageSchema from '@/components/seo/PageSchema';
 
 // ─── ABOVE FOLD: server components, no dynamic() wrapper, streamed eagerly ─
 import HeroSection from '@/components/sections/HeroSection';
@@ -99,10 +98,18 @@ export const metadata: Metadata = {
   },
 };
 
+// Single WebPage schema for the homepage (2026-07-31 fix): this used to
+// be TWO separate WebPage blocks -- this one plus a <PageSchema> call
+// right below with a different name/description for the same URL,
+// flagged sitewide by Semrush as a structured-data markup error (two
+// competing descriptions of the same page). Name now matches the real
+// rendered <title> (metadata.title + layout.tsx's "%s | Bitsbuffer"
+// template) instead of either of the two mismatched versions that used
+// to exist. Breadcrumb kept since it's the more complete of the two.
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Bitsbuffer: custom software studio behind Workflow Engine',
+  name: `Custom software studio behind Workflow Engine | ${siteConfig.name}`,
   description: `Custom software studio building production-grade platforms for ${siteConfig.industriesList}, and the studio behind Workflow Engine.`,
   url: siteConfig.url,
   breadcrumb: {
@@ -114,11 +121,6 @@ const webPageSchema = {
 export default function HomePage() {
   return (
     <main>
-      <PageSchema
-        title="Bitsbuffer | Custom software studio behind Workflow Engine"
-        description="Bitsbuffer builds custom software engineered around how your team actually works."
-        url={siteConfig.url}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}

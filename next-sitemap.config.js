@@ -12,5 +12,9 @@ module.exports = {
   // picks up dynamic /admin routes.
   // Case studies muted 2026-07-22: routes 301 to home (next.config.ts),
   // so they must not appear in the sitemap either.
-  exclude: ['/admin', '/admin/*', '/case-studies', '/case-studies/*'],
+  // flagship-domains excluded 2026-07-30: dropped from nav/footer/llms.txt
+  // 2026-07-20 but never removed from the sitemap, so it sat there with
+  // zero internal links pointing to it (Semrush: "orphaned sitemap page").
+  // Page itself is untouched, still reachable directly, just not listed.
+  exclude: ['/admin', '/admin/*', '/case-studies', '/case-studies/*', '/flagship-domains'],
 };
