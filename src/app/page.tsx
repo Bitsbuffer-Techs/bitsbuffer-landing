@@ -62,8 +62,16 @@ const skeleton = (height: number) => (
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Custom software studio behind Workflow Engine',
-  description: `Bitsbuffer builds custom software engineered around how your team actually works, across ${siteConfig.industriesList}. Home of Workflow Engine.`,
+  // Full string, not just 'Custom software studio behind Workflow Engine'
+  // (2026-08-05 fix): Next.js does not apply a layout's title.template to
+  // a page.tsx sitting at the exact same route segment as that layout --
+  // a documented framework quirk, confirmed live (every other page correctly
+  // showed "... | Bitsbuffer", only "/" was missing it). Also happens to
+  // land the title at 58 characters, inside the 50-60 recommended range.
+  title: `Custom software studio behind Workflow Engine | ${siteConfig.name}`,
+  // Shortened from 198 to 149 characters (2026-08-05): recommended range
+  // is 120-160, the full industries list pushed it well past that.
+  description: 'Bitsbuffer builds custom software engineered around how your team actually works, across e-commerce, fintech, ERP, and more. Home of Workflow Engine.',
   keywords: [
     'custom software development',
     'workflow automation',

@@ -84,9 +84,14 @@ export const viewport: Viewport = {
 // Organization schema. Bitsbuffer is the studio, Workflow Engine is the
 // flagship product it makes, linked via sameAs/makesOffer rather than
 // merged into one schema block, they are two distinct things now.
+// @type is both Organization and LocalBusiness (2026-08-06 fix) -- valid
+// per schema.org (LocalBusiness is a subtype of Organization), and this
+// node already has everything LocalBusiness needs (real address, real
+// contact point), so this is one accurate node satisfying both checks
+// rather than a second, duplicate schema block.
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'LocalBusiness'],
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
